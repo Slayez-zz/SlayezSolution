@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/alagard.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/alagard.xnb","FontDescriptionProcessor","SpriteFontContent",2010,136209,0,5843873
+"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/Vollkorn-Regular.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/Vollkorn-Regular.xnb","FontDescriptionProcessor","SpriteFontContent",2110,270639,0,1621082
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/jail.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/jail.xnb","TextureProcessor","Texture2DContent",912,53333,0,0190122
