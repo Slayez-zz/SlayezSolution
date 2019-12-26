@@ -122,6 +122,16 @@ namespace GameEngine
             y = vector.Y;
         }
 
+        public static float Max(float a, float b)
+        {
+            return a > b ? a : b;
+        }
+
+        public static float Min(float a, float b)
+        {
+            return a < b ? a : b;
+        }
+
         public static Color Random(this Color c)
         {
             return new Color(RandomInt(0, 255), RandomInt(0, 255), RandomInt(0, 255));

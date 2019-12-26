@@ -16,11 +16,6 @@ namespace GameEngine.Systems.UI
         private float rectwidth = 4;
 
         public new Vector2 GetBound { get => TextLabel.GetBound + new Vector2(rectwidth * 2); }
-
-        public bool InFocus { get => _inFocus; set => _inFocus = value; }
-        private bool _inFocus = true;
-        public bool Active { get => _active; set => _active = value; }
-        private bool _active = true;
         public enum EButtonState { disabled, normal, mouseover, pressed }
 
         public Color OutlineColor { get => _outlineColor != new Color(0, 0, 0, 0) ? _outlineColor : ResourseManager.OutlineColor; }

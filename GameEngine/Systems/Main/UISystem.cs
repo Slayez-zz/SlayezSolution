@@ -52,6 +52,20 @@ namespace GameEngine.Systems.Main
             //((ProgressBar)elements[1]).Size =new Vector2(RenderSystem.window.Size.X - 40,25);
             //((ProgressBar)elements[1]).transform.Position = new Vector2(0, 25);
             //((ProgressBar)elements[1]).Align = UserInterfaceElement.EAlignUI.top;
+
+            elements.Add(new TrackBar());
+            ((TrackBar)elements[0]).transform.Position = new Vector2(50,50);
+
+            elements.Add(new Button());
+            elements[1].transform.Position = new Vector2(50, 100);
+            ((Button)elements[1]).LabelText = "Test BTN";
+            ((Button)elements[1]).LabelScale = 0.5f;
+
+            elements.Add(new Label());
+            elements[2].transform.Position = new Vector2(50, 150);
+            ((Label)elements[2]).SetValue("RAM <$! 250,0,0>{0}<$=> Mb\nFPS {1}", "MemoryUse;FramePerSecond", RenderSystem.window);
+            ((Label)elements[2]).Scale = 0.5f;
+            ((Label)elements[2]).Align = UserInterfaceElement.EAlignUI.leftTop;
         }
 
         //public void test()
@@ -77,7 +91,7 @@ namespace GameEngine.Systems.Main
             }            
             //batch.DrawString(ResourseManager.DEFAULT_FONT, InputCore.DragTime.ToString(), new Vector2(0, 0), new Color(255, 0, 0, 150), 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
             //batch.DrawString(ResourseManager.DEFAULT_FONT, "Game objects " + SystemManager.gameObjects.Count.ToString(), new Vector2(0, 25), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
-            batch.DrawString(ResourseManager.DEFAULT_FONT, $"11 % 2 = { ((11 - (11 % 2)) / 2)}", new Vector2(0, 50), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
+            //batch.DrawString(ResourseManager.DEFAULT_FONT, $"11 % 2 = { ((11 - (11 % 2)) / 2)}", new Vector2(0, 50), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
 
             RenderSystem.window.EndMyDraw();
         }
