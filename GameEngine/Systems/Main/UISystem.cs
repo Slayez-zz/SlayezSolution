@@ -77,7 +77,7 @@ namespace GameEngine.Systems.Main
             }            
             //batch.DrawString(ResourseManager.DEFAULT_FONT, InputCore.DragTime.ToString(), new Vector2(0, 0), new Color(255, 0, 0, 150), 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
             //batch.DrawString(ResourseManager.DEFAULT_FONT, "Game objects " + SystemManager.gameObjects.Count.ToString(), new Vector2(0, 25), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
-            //batch.DrawString(ResourseManager.DEFAULT_FONT, "List capacity " + SystemManager.gameObjects.Capacity.ToString(), new Vector2(0, 50), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
+            batch.DrawString(ResourseManager.DEFAULT_FONT, $"11 % 2 = { ((11 - (11 % 2)) / 2)}", new Vector2(0, 50), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
 
             RenderSystem.window.EndMyDraw();
         }

@@ -116,6 +116,12 @@ namespace GameEngine
             spriteBatch.Draw(ResourseManager.Texture("pixel"), new Rectangle((int)(rect.X + thicknes), (int)(rect.Y + thicknes), (int)(rect.Width - thicknes * 2), (int)(rect.Height - thicknes * 2)), null, fillcolor, 0, new Vector2(), SpriteEffects.None, layer - 0.0001f);
         }
 
+        public static void SetFromVector(this Vector2 vector, out float x, out float y)
+        {
+            x = vector.X;
+            y = vector.Y;
+        }
+
         public static Color Random(this Color c)
         {
             return new Color(RandomInt(0, 255), RandomInt(0, 255), RandomInt(0, 255));

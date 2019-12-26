@@ -141,6 +141,7 @@
     <Compile Include="Systems\UI\IUserInterfaceElement.cs" />
     <Compile Include="Systems\UI\Label.cs" />
     <Compile Include="Systems\UI\ProgressBar.cs" />
+    <Compile Include="Systems\UI\TrackBar.cs" />
     <Compile Include="Systems\UI\UserInterfaceElement.cs" />
     <Compile Include="Utilites.cs" />
   </ItemGroup>
