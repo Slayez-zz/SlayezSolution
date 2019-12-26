@@ -41,13 +41,12 @@ namespace GameEngine.Systems.Main
             ((Label)elements[0]).SetValue("RAM {0} Mb\nFPS {1}", "MemoryUse;FramePerSecond", RenderSystem.window);
             ((Label)elements[0]).Scale = 0.5f;
             ((Label)elements[0]).Align = UserInterfaceElement.EAlignUI.leftBottom;*/
-
-            elements.Add(new Button());
-            elements[0].transform.Position = new Vector2(10, 0);
-            ((Button)elements[0]).LabelText = "Generate Map";
-            ((Button)elements[0]).LabelScale = 0.5f;
-            ((Button)elements[0]).Align = UserInterfaceElement.EAlignUI.leftBottom;
-            ((Button)elements[0]).ClickAction = test;
+            //elements.Add(new Button());
+            //elements[0].transform.Position = new Vector2(10, 0);
+            //((Button)elements[0]).LabelText = "Generate Map";
+            //((Button)elements[0]).LabelScale = 0.5f;
+            //((Button)elements[0]).Align = UserInterfaceElement.EAlignUI.leftBottom;
+            //((Button)elements[0]).ClickAction = test;
             //elements.Add(new ProgressBar());
             //((ProgressBar)elements[1]).SetValue("hp","MaxHp",SystemManager.gameObjects[0].Component<Stats>());
             //((ProgressBar)elements[1]).Size =new Vector2(RenderSystem.window.Size.X - 40,25);
@@ -55,10 +54,10 @@ namespace GameEngine.Systems.Main
             //((ProgressBar)elements[1]).Align = UserInterfaceElement.EAlignUI.top;
         }
 
-        public void test()
-        {
-            SystemManager.map = CaveGenerator.Generate(50, 50, 50);
-        }
+        //public void test()
+        //{
+        //    SystemManager.map = CaveGenerator.Generate(50, 50, 50);
+        //}
 
         public override void Update()
         {
