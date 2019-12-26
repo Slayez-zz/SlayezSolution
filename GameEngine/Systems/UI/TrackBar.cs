@@ -40,10 +40,10 @@ namespace GameEngine.Systems.UI
 
         private Rectangle track
         {
-            get => 
+            get =>
             new Rectangle
             ((new Vector2((Align.ToVector(GetBound).X - (_trackSize.X / 2)) + ((_value - _minValue) / (_maxValue - _minValue) * _width),
-            Align.ToVector(GetBound).Y + Align.ToVector(GetBound).Y / 2 /*+ _trackSize.Y / 2*/) + transform.Position).ToPoint() , _trackSize.ToPoint());
+            Align.ToVector(GetBound).Y + Align.ToVector(GetBound).Y / 2 /*+ _trackSize.Y / 2*/) + transform.Position).ToPoint(), _trackSize.ToPoint());
         }
 
         public override void Draw()
@@ -60,15 +60,11 @@ namespace GameEngine.Systems.UI
             }
             batch.DrawRectangleWithOutline(track, TrackColor, StepColor, 1, DepthLayer - 0.0006f);
 
-
-            //batch.DrawString(ResourseManager.DEFAULT_FONT, val.ToString(), Align.ToVector(GetBound) + new Vector2(0, _trackSize.Y), Color.White, 0, new Vector2(), 0.5f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 0);
         }
 
         private bool beginDrag = false;
-
-        //float val = 0;
         public override void Update()
-        {   
+        {
             if (InputCore.activeInput)
                 if (InFocus)
                 {
@@ -79,13 +75,11 @@ namespace GameEngine.Systems.UI
                             if (InputCore.LMB_Clicked)
                                 beginDrag = true;
                         }
-
                         if (beginDrag)
                         {
-                            Value = ((InputCore.mousePos.X - (Align.ToVector(GetBound).X + transform.Position.X)) / _width)*(_maxValue-_minValue);
+                            Value = ((InputCore.mousePos.X - (Align.ToVector(GetBound).X + transform.Position.X)) / _width) * (_maxValue - _minValue);
 
                         }
-
                         if (InputCore.LMB_Released)
                             beginDrag = false;
                     }
