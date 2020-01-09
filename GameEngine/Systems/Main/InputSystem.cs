@@ -15,39 +15,41 @@ namespace GameEngine.Systems.Main
 
         public override void Update()
         {
-            //if (InputCore.isKeyTap(Keys.F))
-            //{
-            //    for (int i = 0; i < 5; i++)
-            //    {
-            //        new GameObject("id" + (SystemManager.gameObjects.Count).ToString(),
-            //            new List<Component> {
-            //        new Transform(),
-            //        new ObjSprite("fasf"),
-            //        new Particle(new Vector3(Utilites.RandomInt(-50,50), Utilites.RandomInt(-50,50),0))//,
-            //        //new Lifetime(2)
-            //            }
-            //            , true).CreateInWorld(InputCore.mousePos.ToVector2());
-            //    }
-            //}
 
-            //if (InputCore.isKeyTap(Keys.D))
-            //{
-            //    GameObject obj =
-            //    SystemManager.gameObjects[0];
-            //}
 
-            //if (InputCore.isKeyTap(Keys.R))
-            //{
-            //    SystemManager.gameObjects.Clear();
-            //    /*
-            //    //SystemManager.GOM.gameObjects.Clear();
-            //    for (int i = objects.Count -1; i >= 0; i--)
-            //    {
-            //        objects.Clear();
-            //    }*/
-            //}
+                //if (InputCore.isKeyTap(Keys.F))
+                //{
+                //    for (int i = 0; i < 5; i++)
+                //    {
+                //        new GameObject("id" + (SystemManager.gameObjects.Count).ToString(),
+                //            new List<Component> {
+                //        new Transform(),
+                //        new ObjSprite("fasf"),
+                //        new Particle(new Vector3(Utilites.RandomInt(-50,50), Utilites.RandomInt(-50,50),0))//,
+                //        //new Lifetime(2)
+                //            }
+                //            , true).CreateInWorld(InputCore.mousePos.ToVector2());
+                //    }
+                //}
 
-            if (InputCore.isKeyDown(Keys.Left))
+                //if (InputCore.isKeyTap(Keys.D))
+                //{
+                //    GameObject obj =
+                //    SystemManager.gameObjects[0];
+                //}
+
+                //if (InputCore.isKeyTap(Keys.R))
+                //{
+                //    SystemManager.gameObjects.Clear();
+                //    /*
+                //    //SystemManager.GOM.gameObjects.Clear();
+                //    for (int i = objects.Count -1; i >= 0; i--)
+                //    {
+                //        objects.Clear();
+                //    }*/
+                //}
+
+                if (InputCore.isKeyDown(Keys.Left))
             {
                 Camera.position += Utilites.Left * Camera.Speed * SystemManager.deltaTime;
             }

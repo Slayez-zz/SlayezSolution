@@ -43,12 +43,12 @@ namespace GameEngine.Systems.UI
             get =>
             new Rectangle
             ((new Vector2((Align.ToVector(GetBound).X - (_trackSize.X / 2)) + ((_value - _minValue) / (_maxValue - _minValue) * _width),
-            Align.ToVector(GetBound).Y + Align.ToVector(GetBound).Y / 2 /*+ _trackSize.Y / 2*/) + transform.Position).ToPoint(), _trackSize.ToPoint());
+            Align.ToVector(GetBound).Y + Align.ToVector(GetBound).Y / 2 /*+ _trackSize.Y / 2*/) + transform.Position.To2d()).ToPoint(), _trackSize.ToPoint());
         }
 
         public override void Draw()
         {
-            Vector2 zeropos = Align.ToVector(GetBound) + transform.Position;
+            Vector2 zeropos = Align.ToVector(GetBound) + transform.Position.To2d();
             Vector2 barpos = new Vector2(zeropos.X, zeropos.Y + GetBound.Y / 2 - _height / 2);
             Rectangle bar = new Rectangle(barpos.ToPoint(), Size.ToPoint());
             batch.DrawRectangleWithOutline(bar, BarColor, StepColor, 1, DepthLayer);

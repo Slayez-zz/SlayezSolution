@@ -36,11 +36,11 @@ namespace GameEngine.Systems.UI
         public override void Draw()
         {
             // фон аутлайн
-            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position + Align.ToVector(GetBound)).ToPoint(), Size.ToPoint()), new Color(150,150,150), 0, DepthLayer);
+            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position.To2d() + Align.ToVector(GetBound)).ToPoint(), Size.ToPoint()), new Color(150,150,150), 0, DepthLayer);
             // не заполненная
-            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position + new Vector2(_outlineThickness / 4) + Align.ToVector(GetBound)).ToPoint(), (Size.Add(_outlineThickness / 2 * -1)).ToPoint()), new Color(200, 200, 200), 0, DepthLayer);
+            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position.To2d() + new Vector2(_outlineThickness / 4) + Align.ToVector(GetBound)).ToPoint(), (Size.Add(_outlineThickness / 2 * -1)).ToPoint()), new Color(200, 200, 200), 0, DepthLayer);
             // заполненная
-            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position + new Vector2(_outlineThickness / 4) + Align.ToVector(GetBound)).ToPoint(), (new Vector2(Size.Add(_outlineThickness / 2 * -1).X*Progress, Size.Add(_outlineThickness / 2 * -1).Y)).ToPoint()), new Color(200, 50, 50), 0, DepthLayer);
+            RenderSystem.window.spriteBatch.DrawRectangle(new Rectangle((transform.Position.To2d() + new Vector2(_outlineThickness / 4) + Align.ToVector(GetBound)).ToPoint(), (new Vector2(Size.Add(_outlineThickness / 2 * -1).X*Progress, Size.Add(_outlineThickness / 2 * -1).Y)).ToPoint()), new Color(200, 50, 50), 0, DepthLayer);
         }
 
         public override void Update()

@@ -76,7 +76,7 @@ namespace GameEngine.Systems.Main
                 Remove(name);
         }
 
-        internal static bool InPoint(Vector2 pos, Component component)
+        internal static bool InPoint(Vector3 pos, Component component)
         {
             foreach (GameObject obj in SystemManager.gameObjects)
                 if (obj.HasComponentType(component.GetType()))

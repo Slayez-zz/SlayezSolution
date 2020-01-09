@@ -5,17 +5,17 @@ namespace GameEngine.Components
 {
     public class Particle : Component
     {
-        private Vector3 _velocity;
+        private Vector4 _velocity;
 
-        public Vector3 Velocity { get => _velocity; set => _velocity = value; }
+        public Vector4 Velocity { get => _velocity; set => _velocity = value; }
 
-        public Particle(Vector3 velocity)
+        public Particle(Vector4 velocity)
         {
             _velocity = velocity;
         }
         public Particle()
         {
-            _velocity = new Vector3(0,0,0);
+            _velocity = new Vector4(0,0,0,0);
         }
     }
 }

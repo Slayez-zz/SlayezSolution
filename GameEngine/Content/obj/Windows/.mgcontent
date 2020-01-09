@@ -6,9 +6,27 @@
   <SourceFiles>
     <File>E:/Projects/SlayezSolution/GameEngine/Content/Fonts/alagard.spritefont</File>
     <File>E:/Projects/SlayezSolution/GameEngine/Content/Fonts/Vollkorn-Regular.spritefont</File>
-    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/jail.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isocube.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isoearth.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isograss.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isosand.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isoselected.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isostone.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isotile.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isotransform.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/isowater.png</File>
+    <File>E:/Projects/SlayezSolution/GameEngine/Content/Textures/player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

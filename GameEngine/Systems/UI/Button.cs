@@ -49,7 +49,7 @@ namespace GameEngine.Systems.UI
 
         public override void Draw()
         {
-            Rectangle rectangle = new Rectangle((transform.Position + Align.ToVector(GetBound) - new Vector2(rectwidth)).ToPoint(), (GetBound).ToPoint());
+            Rectangle rectangle = new Rectangle((transform.Position.Add(Align.ToVector(GetBound)).Add(new Vector2(-rectwidth))).ToPoint(), (GetBound).ToPoint());
             RenderSystem.window.spriteBatch.DrawRectangleWithOutline(rectangle, GetFillColor(), OutlineColor, 2, DepthLayer);
             TextLabel.Draw(this.GetBound);
         }
@@ -64,10 +64,10 @@ namespace GameEngine.Systems.UI
             {                
                 if (InFocus)
                 {
-                    if (Utilites.PointInRectangle(InputCore.mousePos.ToVector2(), new Rectangle((transform.Position + Align.ToVector(GetBound) - new Vector2(rectwidth)).ToPoint(), (GetBound).ToPoint())))
+                    if (Utilites.PointInRectangle(InputCore.mousePos.ToVector2(), new Rectangle((transform.Position.Add(Align.ToVector(GetBound)).Add(new Vector2(-rectwidth))).ToPoint(), (GetBound).ToPoint())))
                     {
                         if (InputCore.LMB_Pressed)
-                            if (Utilites.PointInRectangle(InputCore.ClickPoint.ToVector2(), new Rectangle((transform.Position + Align.ToVector(GetBound) - new Vector2(rectwidth)).ToPoint(), (GetBound).ToPoint())))
+                            if (Utilites.PointInRectangle(InputCore.ClickPoint.ToVector2(), new Rectangle((transform.Position.Add(Align.ToVector(GetBound)).Add(new Vector2(-rectwidth))).ToPoint(), (GetBound).ToPoint())))
                         {
                             ButtonState = EButtonState.pressed;
                         }

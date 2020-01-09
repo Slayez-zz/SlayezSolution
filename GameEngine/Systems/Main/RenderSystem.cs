@@ -2,6 +2,7 @@
 using GameEngine.Components.Main;
 using GameEngine.GameData;
 using GameEngine.GameObjects;
+using GameEngine.Generators;
 using GameEngine.Systems.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -131,8 +132,96 @@ namespace GameEngine.Systems.Main
             //DrawUIAlign();
             //DrawTestTileMap();
             //DrawAllTextures();
-            DrawAllTestMap(SystemManager.map);
+            //DrawAllTestMap(SystemManager.map);
+
+            DrawTestIsoMap();
+
             window.EndMyDraw();
+        }
+
+        public static void DrawTestIsoMap()
+        {
+            Vector2 isosize = new Vector2(32, 16);
+            Point worldsize = new Point(65, 65);
+            Point worldorigin = new Point(worldsize.X / 2, 5);
+
+            Point vMouse = InputCore.mousePos;
+
+            Point vSelected = Utilites.GetIsoPos(InputCore.mousePos - Camera.position.ToPoint(), isosize, worldorigin);
+
+            int mhight = 20;
+
+            //bool[,,] map = new bool[worldsize.X, worldsize.Y, mhight];
+
+
+            //for (int y = 0; y < worldsize.Y; y++)
+            //    for (int x = 0; x < worldsize.X; x++)
+            //    {
+            //        for (int z = mhight - 1; z >= 0; z--)
+            //            if (map[x, y, z])
+            //            {
+            //                float layer = 0.5f - y * 0.001f - x * 0.001f - z * 0.002f;
+            //                string texture = "isowater";
+
+            //                if (z == 0)
+            //                    if (map[x, y, z + 1])
+            //                        texture = "isoearth";
+
+            //                if (z > 0)
+            //                    texture = "isoearth";
+            //                if (z > 1)
+            //                    texture = "isograss";
+            //                if (z > 2)
+            //                    texture = "isostone";
+            //                batch.Draw(ResourseManager.Texture(texture), new Rectangle((Utilites.ToSpriteIsoTilePos(new Vector3(x, y, z), isosize, worldorigin)).ToPoint(), ResourseManager.Texture("isocube").Bounds.Size), null, Color.LightGreen, 0, new Vector2(), SpriteEffects.None, layer);
+            //                break;
+            //            }
+            //    }
+
+
+            for (int z = 0; z < mhight; z++)
+                for (int y = 0; y < worldsize.Y; y++)
+                    for (int x = 0; x < worldsize.X; x++)
+                    {
+                        if (SystemManager.rm[x, y, z])
+                        {
+                            float layer = 0.5f - y * 0.001f - x * 0.001f - z * 0.002f;
+                            string texture = "isowater";
+
+                            if (z == 0)
+                                if (SystemManager.map[x, y, z + 1])
+                                    texture = "isoearth";
+
+                            if (z > 0)
+                                texture = "isoearth";
+                            if (z > 1)
+                                texture = "isograss";
+                            if (z > 2)
+                                texture = "isostone";
+                            batch.Draw(ResourseManager.Texture(texture), new Rectangle((Utilites.ToSpriteIsoTilePos(new Vector3(x, y, z), isosize, worldorigin)).ToPoint() - Camera.position.ToPoint(), ResourseManager.Texture(texture).Bounds.Size), null, Color.White, 0, new Vector2(), SpriteEffects.None, layer);
+                        }
+                    }
+            Vector2 playerpos = Utilites.ToIsoMap(SystemManager.player, isosize, worldorigin);
+            playerpos.X -= ResourseManager.Texture("player").Bounds.Size.X / 2;
+            playerpos.Y -= ResourseManager.Texture("player").Bounds.Size.Y;
+            batch.DrawString(ResourseManager.DEFAULT_FONT, playerpos.ToString(), new Vector2(0, 500), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
+            batch.Draw(ResourseManager.Texture("player"), new Rectangle( (playerpos - Camera.position).ToPoint(), ResourseManager.Texture("player").Bounds.Size), null, Color.White, 0, new Vector2(), SpriteEffects.None, 0);
+            /*
+            if ((vSelected.X >= 0) & (vSelected.Y >= 0))
+                if ((vSelected.X < worldsize.X) & (vSelected.Y < worldsize.Y))
+                {
+                    Point p = Utilites.ToSpriteIsoTilePos(vSelected, isosize, worldorigin).ToPoint();
+                    if (map[vSelected.X, vSelected.Y, 1])
+                        p.Y -= (int)(isosize.Y / 2);
+                    batch.Draw(ResourseManager.Texture("isoselected"), new Rectangle(p, isosize.ToPoint()), null, Color.White, 0, new Vector2(), SpriteEffects.None, 0.2f);
+                    batch.DrawString(ResourseManager.DEFAULT_FONT, vSelected.ToString(), new Vector2(0, 500), Color.White, 0, new Vector2(), 0.5f, SpriteEffects.None, 0);
+                }*/
+            //        for (int x = 0; x < 10; x++)
+            //    batch.Draw(ResourseManager.Texture("isotransform"), new Vector2(x * 64, 50), Color.White);
+            //for (int x = 0; x < 10; x++)
+            //    batch.Draw(ResourseManager.Texture("isotransform"), new Vector2(x * 64 + 32, 50 + 16), Color.White);
+            //for (int x = 0; x < 10; x++)
+            //    batch.Draw(ResourseManager.Texture("isotransform"), new Vector2(x * 64, 50 + 32), Color.White);
         }
 
         public static void DrawAllTextures()
@@ -155,14 +244,14 @@ namespace GameEngine.Systems.Main
                 {
                     if (map[x, y])
                     {
-                        Rectangle rect = new Rectangle(new Point(x * Tile.tileSize*2, y * Tile.tileSize*2), new Point(Tile.tileSize*2));
+                        Rectangle rect = new Rectangle(new Point(x * Tile.tileSize * 2, y * Tile.tileSize * 2), new Point(Tile.tileSize * 2));
                         if (rect.Intersects(new Rectangle(Camera.position.ToPoint(), RenderSystem.window.Size.ToPoint())))
                         {
-                            rect = new Rectangle(new Point(x * Tile.tileSize*2, y * Tile.tileSize*2) - Camera.position.ToPoint(), new Point(Tile.tileSize*2));
+                            rect = new Rectangle(new Point(x * Tile.tileSize * 2, y * Tile.tileSize * 2) - Camera.position.ToPoint(), new Point(Tile.tileSize * 2));
                             batch.Draw(ResourseManager.Texture("jail_" + (Tile.GetNormalId(Tile.GetTileId2D(map, new Point(x, y))) + 4).ToString()), rect, null, Color.White, 0, new Vector2(), SpriteEffects.None, 0.8f);
                             try
                             {
-                                rect = new Rectangle(new Point(x * Tile.tileSize*2, (y + 1) * Tile.tileSize*2) - Camera.position.ToPoint(), new Point(Tile.tileSize*2));
+                                rect = new Rectangle(new Point(x * Tile.tileSize * 2, (y + 1) * Tile.tileSize * 2) - Camera.position.ToPoint(), new Point(Tile.tileSize * 2));
                                 if (!map[x, y + 1])
                                     batch.Draw(ResourseManager.Texture("jail_1"), rect, null, Color.White, 0, new Vector2(), SpriteEffects.None, 0.6f);
                             }
@@ -173,10 +262,10 @@ namespace GameEngine.Systems.Main
                     }
                     else
                     {
-                        Rectangle rect = new Rectangle(new Point(x * Tile.tileSize*2, y * Tile.tileSize*2), new Point(Tile.tileSize*2));
+                        Rectangle rect = new Rectangle(new Point(x * Tile.tileSize * 2, y * Tile.tileSize * 2), new Point(Tile.tileSize * 2));
                         if (rect.Intersects(new Rectangle(Camera.position.ToPoint(), RenderSystem.window.Size.ToPoint())))
                         {
-                            rect = new Rectangle(new Point(x * Tile.tileSize*2, y * Tile.tileSize*2) - Camera.position.ToPoint(), new Point(Tile.tileSize*2));
+                            rect = new Rectangle(new Point(x * Tile.tileSize * 2, y * Tile.tileSize * 2) - Camera.position.ToPoint(), new Point(Tile.tileSize * 2));
                             batch.Draw(ResourseManager.Texture("jail_0"), rect, null, Color.White, 0, new Vector2(), SpriteEffects.None, 0.7f);
 
                         }

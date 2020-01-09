@@ -70,7 +70,7 @@ namespace GameEngine.Generators
             float max = FindMax(hm);
 
             for (int x = 0; x < hm.GetLength(0); x++) // нормализуем высоты
-                for (int z = 0; z < hm.GetLength(0); z++)
+                for (int z = 0; z < hm.GetLength(1); z++)
                     hm[x, z] = (hm[x, z] - min) / (max - min);
             return hm;
         }
@@ -79,7 +79,7 @@ namespace GameEngine.Generators
         {
             for (int i = 0; i < count; i++)  // сглаживаем высоты
                 for (int x = 0; x < hm.GetLength(0); x++)
-                    for (int z = 0; z < hm.GetLength(0); z++)
+                    for (int z = 0; z < hm.GetLength(1); z++)
                         hm[x, z] = (float)Math.Sqrt(hm[x, z]);
             return hm;
         }
@@ -96,6 +96,18 @@ namespace GameEngine.Generators
                 }
             return a;
         }
+
+        public static float[,] SetHeight(float[,] hm, float height)
+        {
+            for (int x = 0; x < hm.GetLength(0); x++)
+                for (int y = 0; y < hm.GetLength(1); y++)
+                {
+                    hm[x, y] *= height;
+                }
+            return hm;
+        }
+
+
             public static float[,] GenSimplexNoise(int size, float height)
         {
             SimplexNoise.Noise.Seed = Utilites.RandomInt(10000);

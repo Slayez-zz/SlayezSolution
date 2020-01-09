@@ -124,26 +124,26 @@ namespace GameEngine.Generators
             return i;
         }
 
-        public static int CreateOre(Vector2 startPos, bool[,] structure, string prefab)
-        {
-            int i = 0;
+        //public static int CreateOre(Vector2 startPos, bool[,] structure, string prefab)
+        //{
+        //    int i = 0;
 
-            for (int x = 0; x < structure.GetLength(0); x++)
-                for (int y = 0; y < structure.GetLength(1); y++)
-                {
-                    if (!structure[x, y])
-                    {
-                        if (!GameLocation.IsSolid((startPos + new Vector2(x, y))))
-                        {
-                            if (!GameObjectManager.InPoint(Utilites.Multiply(startPos + new Vector2(x, y), Tile.tileSize),new OreDeposit()))
-                            {
-                                GameObjectManager.Create(prefab).CreateInWorld(Utilites.Multiply((startPos + new Vector2(x, y)), Tile.tileSize));
-                                i++;
-                            }
-                        }
-                    }
-                }
-            return i;
-        }
+        //    for (int x = 0; x < structure.GetLength(0); x++)
+        //        for (int y = 0; y < structure.GetLength(1); y++)
+        //        {
+        //            if (!structure[x, y])
+        //            {
+        //                if (!GameLocation.IsSolid((startPos + new Vector2(x, y))))
+        //                {
+        //                    if (!GameObjectManager.InPoint(Utilites.Multiply(startPos + new Vector2(x, y), Tile.tileSize),new OreDeposit()))
+        //                    {
+        //                        GameObjectManager.Create(prefab).CreateInWorld(Utilites.Multiply((startPos + new Vector2(x, y)), Tile.tileSize));
+        //                        i++;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    return i;
+        //}
     }
 }

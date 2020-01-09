@@ -198,7 +198,7 @@ namespace GameEngine.Systems.UI
 
         public override void Draw()
         {
-            Vector2 point = transform.Position + Align.ToVector(GetBound);
+            Vector2 point = transform.Position.Add(Align.ToVector(GetBound)).To2d();
             Vector2 pos = point;
 
             if (Lines.Count > 0)
@@ -228,7 +228,7 @@ namespace GameEngine.Systems.UI
 
         public void Draw(Vector2 bound)
         {
-            Vector2 point = transform.Position + Align.ToVector(bound);
+            Vector2 point = transform.Position.To2d() + Align.ToVector(bound);
             Vector2 pos = point;
 
             if (Lines.Count > 0)

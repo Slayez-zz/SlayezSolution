@@ -15,8 +15,8 @@ namespace GameEngine.Systems
                     if (obj.HasComponentType(typeof(Transform)))
                     {
                         
-                        obj.Component<Transform>().Move(obj.Component<Particle>().Velocity.Multiply(SystemManager.deltaTime).To2d());
-                        obj.Component<Transform>().Rotation += obj.Component<Particle>().Velocity.Z * SystemManager.deltaTime;
+                        obj.Component<Transform>().Move(obj.Component<Particle>().Velocity.Multiply(SystemManager.deltaTime).To3d());
+                        obj.Component<Transform>().Rotation += obj.Component<Particle>().Velocity.W * SystemManager.deltaTime;
                         if (obj.Component<Transform>().Rotation >= 360) obj.Component<Transform>().Rotation -= 360;
                     }
             }

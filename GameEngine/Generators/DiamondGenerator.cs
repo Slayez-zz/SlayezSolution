@@ -62,7 +62,7 @@ namespace GameEngine.Generators
          */
         public static float[,] DiamondSquare(float maxHeight, int Iterations, float Smoothing)
         {
-            int size = 257;
+            int size = 65;
 
 
             float seedValue = maxHeight; //200    // higher values will generate terrain with higher maximum heights

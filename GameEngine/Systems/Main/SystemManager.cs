@@ -1,13 +1,7 @@
-﻿using GameEngine.Components;
-using GameEngine.Components.Main;
-using GameEngine.GameData;
+﻿using GameEngine.GameData;
 using GameEngine.GameObjects;
-using GameEngine.Generators;
-using GameEngine.Systems.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace GameEngine.Systems.Main
@@ -17,10 +11,13 @@ namespace GameEngine.Systems.Main
         // List of all systems used
         private static List<AbstractSystem> _systems = new List<AbstractSystem>();
         public static float deltaTime;
-
-        public static bool[,] map = new bool[50, 50];
-
         public static GameObjectList gameObjects { get => GameObjectManager.gameObjects; }
+
+        public static bool[,,] map = new bool[65, 65, 20];
+        public static bool[,,] rm = new bool[65, 65, 20];
+
+        public static Vector3 player = new Vector3(0, 0, 0);
+
         public static void Initialize()
         {
             //map = CaveGenerator.Generate(50, 50, 50);
@@ -47,7 +44,7 @@ namespace GameEngine.Systems.Main
         }
 
         public static void Update()
-        {          
+        {
             foreach (AbstractSystem system in _systems)
             {
                 if (system.GetType() != typeof(RenderSystem))

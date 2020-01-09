@@ -129,7 +129,7 @@ namespace GameEngine.GameObjects
         {
             Register();
         }
-        public void CreateInWorld(Vector2 pos)
+        public void CreateInWorld(Vector3 pos)
         {
             Component<Transform>().Position = pos;
             Register();

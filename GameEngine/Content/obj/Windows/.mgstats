@@ -1,4 +1,13 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/alagard.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/alagard.xnb","FontDescriptionProcessor","SpriteFontContent",2010,136209,0,5843873
-"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/Vollkorn-Regular.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/Vollkorn-Regular.xnb","FontDescriptionProcessor","SpriteFontContent",2110,270639,0,1621082
-"E:/Projects/SlayezSolution/GameEngine/Content/Textures/jail.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/jail.xnb","TextureProcessor","Texture2DContent",912,53333,0,0190122
+"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/alagard.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/alagard.xnb","FontDescriptionProcessor","SpriteFontContent",2010,136209,0,3472388
+"E:/Projects/SlayezSolution/GameEngine/Content/Fonts/Vollkorn-Regular.spritefont","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Fonts/Vollkorn-Regular.xnb","FontDescriptionProcessor","SpriteFontContent",2110,270639,0,1250851
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isocube.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isocube.xnb","TextureProcessor","Texture2DContent",699,853,0,0200144
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isoearth.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isoearth.xnb","TextureProcessor","Texture2DContent",943,3157,0,0050031
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isograss.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isograss.xnb","TextureProcessor","Texture2DContent",991,3157,0,0015013
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isosand.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isosand.xnb","TextureProcessor","Texture2DContent",794,853,0,0010007
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isoselected.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isoselected.xnb","TextureProcessor","Texture2DContent",845,3157,0,0020013
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isostone.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isostone.xnb","TextureProcessor","Texture2DContent",880,3157,0,0020014
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isotile.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isotile.xnb","TextureProcessor","Texture2DContent",588,597,0,0040034
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isotransform.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isotransform.xnb","TextureProcessor","Texture2DContent",640,597,0,0015011
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/isowater.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/isowater.xnb","TextureProcessor","Texture2DContent",1016,3157,0,001501
+"E:/Projects/SlayezSolution/GameEngine/Content/Textures/player.png","E:/Projects/SlayezSolution/GameEngine/Content/bin/Windows/Textures/player.xnb","TextureProcessor","Texture2DContent",1122,1705,0,0035018

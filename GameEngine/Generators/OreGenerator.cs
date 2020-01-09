@@ -19,9 +19,9 @@ namespace GameEngine.Generators
             return cluster;
         }
         
-        public static int SpawnOre(Vector2 pos, int minOre, int maxOre, string prefab)
-        {
-           return StructureInstruments.CreateOre(pos, GenerateOreCluster((int)(maxOre), (int)(maxOre), 55, minOre, maxOre), prefab);
-        }
+        //public static int SpawnOre(Vector2 pos, int minOre, int maxOre, string prefab)
+        //{
+        //   return StructureInstruments.CreateOre(pos, GenerateOreCluster((int)(maxOre), (int)(maxOre), 55, minOre, maxOre), prefab);
+        //}
     }
 }

@@ -27,9 +27,9 @@ namespace GameEngine.Systems
                             {
                                 if (obj.Component<Spawner>().Radius > 0)
                                 {
-                                    a.Component<Transform>().Position = obj.Component<Transform>().Position +
-                                        new Vector2(Utilites.RandomFloat((int)-obj.Component<Spawner>().Radius, (int)obj.Component<Spawner>().Radius),
-                                        Utilites.RandomFloat((int)-obj.Component<Spawner>().Radius, (int)obj.Component<Spawner>().Radius));
+                                    //a.Component<Transform>().Position = obj.Component<Transform>().Position +
+                                    //    new Vector2(Utilites.RandomFloat((int)-obj.Component<Spawner>().Radius, (int)obj.Component<Spawner>().Radius),
+                                    //    Utilites.RandomFloat((int)-obj.Component<Spawner>().Radius, (int)obj.Component<Spawner>().Radius));
                                 }
                                 else
                                 {

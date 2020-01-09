@@ -79,7 +79,15 @@ namespace GameEngine
             pixel.SetData(new Color[] { new Color(255, 0, 255), new Color(0, 0, 0), new Color(0, 0, 0), new Color(255, 0, 255) });
             _textures.Add("not_found", pixel);
             pixel = null;
-            LoadGroundTileSet("jail");
+            LoadTexture("isotransform");
+            LoadTexture("isoselected");
+            LoadTexture("isocube");
+            LoadTexture("isoearth");
+            LoadTexture("isograss"); 
+            LoadTexture("isostone");
+            LoadTexture("isowater");
+            LoadTexture("isosand");
+            LoadTexture("player");
         }
 
         public static Dictionary<int, byte> TileIdDictionary = new Dictionary<int, byte>();

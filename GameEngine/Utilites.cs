@@ -12,6 +12,12 @@ namespace GameEngine
     {
         private static Random random = new Random();
 
+
+
+        public static Point ToPoint(this Vector3 v3)
+        {
+            return new Point((int)v3.X,(int)v3.Y);
+        }
         public static int ToInt(this string a, int _base)
         {
             int x = int.Parse(a);
@@ -86,6 +92,112 @@ namespace GameEngine
         public static Vector2 Add(this Vector2 v, float val)
         {
             return new Vector2(v.X + val, v.Y + val);
+        }
+
+        public static Vector3 Add(this Vector3 v3, Vector2 v2)
+        {
+            return new Vector3(v3.X + v2.X, v3.Y + v2.Y, v3.Z);
+        }
+
+        public static Vector2 ToSpriteIsoTilePos(Point pos, Vector2 isosize, Point worldorigin)
+        {
+            Vector2 p = new Vector2
+                ((pos.X - pos.Y) * isosize.X / 2,
+                  (pos.X + pos.Y) * isosize.Y / 2);
+            p += worldorigin.ToVector2() * isosize;
+            return p;
+        }
+
+        public static Vector2 ToSpriteIsoTilePos(Vector3 pos, Vector2 isosize, Point worldorigin)
+        {
+            Vector2 p = new Vector2
+                ((pos.X - pos.Y) * isosize.X / 2,
+                  (pos.X + pos.Y) * isosize.Y / 2);
+            p += worldorigin.ToVector2() * isosize;
+            p.Y -= isosize.Y / 2 * pos.Z;
+            return p;
+        }
+
+        public static bool IsoIsVisible(bool[,,] map, int x, int y, int z)
+        {
+            if (x == map.GetLength(0) - 1)
+                return true;
+            if (y == map.GetLength(1) - 1)
+                return true;
+            try
+            {
+                if (!map[x, y, z + 1])
+                    return true;
+            }
+            catch { return true; }
+
+            try
+            {
+                if (!map[x + 1, y, z])
+                    return true;
+            }
+            catch { return true; }
+
+            try
+            {
+                if (!map[x, y + 1, z])
+                    return true;
+            }
+            catch { return true; }
+            return false;
+        }
+
+        public static Point GetIsoPos(Point pos, Vector2 isosize, Point worldorigin)
+        {
+            Point vCell = pos / isosize.ToPoint();
+
+            Point p = new Point
+                ((vCell.Y - worldorigin.Y) + (vCell.X - worldorigin.X),
+                  (vCell.Y - worldorigin.Y) - (vCell.X - worldorigin.X));
+
+            Vector2 vOffset = new Vector2(pos.ToVector2().X % isosize.X, pos.ToVector2().Y % isosize.Y);
+
+            if (vOffset.X <= isosize.X)
+            {
+                if (PointInTriangle(vOffset, new Vector2(), new Vector2(0, isosize.Y / 2), new Vector2(isosize.X / 2, 0)))
+                {
+                    p.X--;
+                }
+                else
+                if (PointInTriangle(vOffset, new Vector2(0, isosize.Y), new Vector2(0, isosize.Y / 2), new Vector2(isosize.X / 2, isosize.Y)))
+                {
+                    p.Y++;
+                }
+            }
+            else
+            if (PointInTriangle(vOffset, new Vector2(isosize.X / 2, 0), new Vector2(isosize.X, isosize.Y / 2), new Vector2(isosize.X, 0)))
+            {
+                p.Y--;
+            }
+            else
+            if (PointInTriangle(vOffset, new Vector2(isosize.X, isosize.Y), new Vector2(isosize.X, isosize.Y / 2), new Vector2(isosize.X / 2, isosize.Y)))
+            {
+                p.X++;
+            }
+            return p;
+        }
+
+        internal static Vector2 ToIsoMap(Vector3 pos, Vector2 isosize, Point worldorigin)
+        {
+            int i = 0;
+            Point tilepos = GetIsoPos(pos.ToPoint(), isosize, worldorigin);
+            for (int z = 1; z < SystemManager.map.GetLength(2); z++)
+            {
+                if (SystemManager.map[0, 0, z])
+                    i++;
+                else
+                    break;
+            }
+                
+            return ToSpriteIsoTilePos(pos.ToPoint(), isosize, worldorigin) + isosize.Multiply(0.5f) - new Vector2(0, i* isosize.Y/2);
+
+            Point vCell = GetIsoPos(pos.ToPoint() + worldorigin * isosize.ToPoint(), isosize, worldorigin) + isosize.Multiply(0.5f).ToPoint();
+            return vCell.ToVector2();
         }
 
         public static string GenerateGUID()
@@ -347,6 +459,14 @@ namespace GameEngine
                 this.Width = size.X;
             }
 
+            public FloatRect(Vector3 pos, Vector2 size)
+            {
+                this.Top = pos.Y;
+                this.Left = pos.X;
+                this.Height = size.Y;
+                this.Width = size.X;
+            }
+
             public Vector2 Center { get => new Vector2(Left + Width / 2, Top + Height / 2); }
 
             public FloatRect(float x, float y, float width, float height) : this()
@@ -501,9 +621,24 @@ namespace GameEngine
             return new Vector3(vec3.X * val, vec3.Y * val, vec3.Z * val);
         }
 
+        public static Vector4 Multiply(this Vector4 vec4, float val)
+        {
+            return new Vector4(vec4.X * val, vec4.Y * val, vec4.Z * val, vec4.W * val);
+        }
+
         public static Vector2 To2d(this Vector3 vec3)
         {
             return new Vector2(vec3.X, vec3.Y);
+        }
+
+        public static Vector3 To3d(this Vector4 vec4)
+        {
+            return new Vector3(vec4.X, vec4.Y, vec4.Z);
+        }
+
+        public static Vector2 To2d(this Vector4 vec4)
+        {
+            return new Vector2(vec4.X, vec4.Y);
         }
 
         /// <summary>
@@ -846,6 +981,27 @@ namespace GameEngine
             };
             return a;
         }*/
+
+        private static float sign(Vector2 p1, Vector2 p2, Vector2 p3)
+        {
+            return (p1.X - p3.X) * (p2.Y - p3.Y) - (p2.X - p3.X) * (p1.Y - p3.Y);
+        }
+
+        public static bool PointInTriangle(Vector2 pt, Vector2 v1, Vector2 v2, Vector2 v3)
+        {
+            float d1, d2, d3;
+            bool has_neg, has_pos;
+
+            d1 = sign(pt, v1, v2);
+            d2 = sign(pt, v2, v3);
+            d3 = sign(pt, v3, v1);
+
+            has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+            has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+            return !(has_neg && has_pos);
+        }
+
 
         public static string ToOnOff(this bool boolean)
         {
